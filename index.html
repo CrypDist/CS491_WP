@@ -45,16 +45,16 @@
               </ul>
 
               <h3 id="introduction">1.0 Introduction</h3>
-              <p>When we have a look at our environment, we can see that technology is everywhere. We can see from daily practices to a very narrow study field that it is the way how our community is being developed. To develop technology, data is the most important resource to understand the needs or store the outputs of our researches. From this point of view, when we say “data”, we mean the all outputs that are taken from any research which are being held right now or were already held. By the definition, we can deduce that this requires storage facilities for a huge amount of data. Engineers are continuously working on handling the data and maintaining resources for the on-going researches in this way. For these purposes, data distribution is a powerful technique which is commonly used all around the world because by distributing the data to different points, one both avoids overloads on a single source point and therefore satisfies the demand from different points of the world better. Of course, data distribution brings out some security related questions with itself but data encryption and replication are some other techniques to solve such problems. Our project, GenoDist, aims to create an off the shelf component that a developer can apply these modern techniques to his data storage facilities easily.</p>
+              <p>When we have a look at our environment, we can see that technology is everywhere. We can see from daily practices to a very narrow study field that it is the way how our community is being developed. To develop technology, data is the most important resource to understand the needs or store the outputs of our researches. From this point of view, when we say “data”, we mean the all outputs that are taken from any research which are being held right now or were already held. By the definition, we can deduce that this requires storage facilities for a huge amount of data. Engineers are continuously working on handling the data and maintaining resources for the on-going researches in this way. For these purposes, data distribution is a powerful technique which is commonly used all around the world because by distributing the data to different points, one both avoids overloads on a single source point and therefore satisfies the demand from different points of the world better. Of course, data distribution brings out some security related questions with itself but data encryption and replication are some other techniques to solve such problems. Our project, CrypDist, aims to create an off the shelf component that a developer can apply these modern techniques to his data storage facilities easily.</p>
 
               <h4 id="description">1.1 Description</h4>
               <p>
-                GenoDist aims to provide fast, safe and secure data management online. The data which is planned to be deal with is huge that can be expressed even in petabytes, and there is an abstract data for each data set which contains brief information about real data.
+                CrypDist aims to provide fast, safe and secure data management online. The data which is planned to be deal with is huge that can be expressed even in petabytes, and there is an abstract data for each data set which contains brief information about real data.
               </p>
               <p>
                 In order to be capable of dealing with such big data, it will be distributed among multiple servers. Since whole data will not be used by a client, only abstracts of the data sets will be stored in client side. However, all of the clients should know about the content of the real data, so the abstracts will be stored as block-chain in clients, which is a data structure used for storing continuously growing list of records without tampering or revision.  By that way, clients can see the content of the real data and download whatever part of the data they need, manipulate it and upload it back to servers. But, the data in the block-chain cannot be manipulated by clients. In case of data addition, a block contains the abstract information will be added synchronously to block-chains on clients and the actual data will be distributed among servers.               </p>
               <p>
-                For data safety, GenoDist will also have data backups to deal with arbitrary server failures. Also, to provide security for users’ data, the data to be stored will be encrypted not to allow third party users to access it. Also, the connections between servers and clients should not leave a back door for unauthorized people.
+                For data safety, CrypDist will also have data backups to deal with arbitrary server failures. Also, to provide security for users’ data, the data to be stored will be encrypted not to allow third party users to access it. Also, the connections between servers and clients should not leave a back door for unauthorized people.
               </p>
               <h4 id="constraints">1.2 Constraints</h4>
               <ul>
@@ -113,7 +113,7 @@
               <h4>3.1 Functional Requirements </h4>
               <ul>
                   <li>
-                      GenoDist is a two-level database management system which is based on a distributed architecture. On the top level, blockchain, a distributed database, stores growing lists of records. These records provide information about how to access to data and summary of data. On the lower level, a distributed system stores the actual data on servers which must be hidden from users.
+                      CrypDist is a two-level database management system which is based on a distributed architecture. On the top level, blockchain, a distributed database, stores growing lists of records. These records provide information about how to access to data and summary of data. On the lower level, a distributed system stores the actual data on servers which must be hidden from users.
                   </li>
                   <li>
                       Each user will be able to login to the system via their usernames and passwords.
@@ -125,22 +125,22 @@
                       Each user will be able to specify total number of copies of data.
                   </li>
                   <li>
-                      GenoDist will distribute the data according to the summaries.
+                      CrypDist will distribute the data according to the summaries.
                   </li>
                   <li>
-                      GenoDist will replicate the data for avoiding data loss.
+                      CrypDist will replicate the data for avoiding data loss.
                   </li>
                   <li>
-                      Depending on the location of the request and content of the requested data, GenoDist will make the most suitable server, in terms of distance and availability of data, respond to the request.
+                      Depending on the location of the request and content of the requested data, CrypDist will make the most suitable server, in terms of distance and availability of data, respond to the request.
                   </li>
                   <li>
-                      During an erroneous situation on a server, GenoDist will continue operating the flow of data via other servers.
+                      During an erroneous situation on a server, CrypDist will continue operating the flow of data via other servers.
                   </li>
                   <li>
-                      GenoDist will check the servers to detect data corruption and if it is the case, it will fix the data by using the replicas.
+                      CrypDist will check the servers to detect data corruption and if it is the case, it will fix the data by using the replicas.
                   </li>
                   <li>
-                      GenoDist will encrypt the data to increase security of the system.
+                      CrypDist will encrypt the data to increase security of the system.
                   </li>
               </ul>
               <h4>3.2 Non-Functional Requirements </h4>

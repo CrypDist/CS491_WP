@@ -1,215 +1,131 @@
-<!doctype html>
-<html lang="">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CrypDist</title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>CrypDist</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
 
-    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.indigo-pink.min.css">
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color: #f2f2f2;
+      padding: 25px;
+    }
+  </style>
+</head>
+<body>
+<div class="jumbotron">
+  <div class="container text-center">
+    <h1>CrypDist</h1>
+    <p>An Encrypting Distribution System</p>
+  </div>
+</div>
 
-    <!-- Material Design icons -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-
-    <!-- Your styles -->
-    <link rel="stylesheet" href="styles/main.css">
-  </head>
-  <body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
-    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-      <header class="mdl-layout__header mdl-layout__header--scroll mdl-color--primary">
-        <div class="mdl-layout--large-screen-only mdl-layout__header-row">
-        </div>
-        <div class="mdl-layout--large-screen-only mdl-layout__header-row">
-          <h3>CrypDist</h3>
-        </div>
-        <div class="mdl-layout--large-screen-only mdl-layout__header-row">
-        <h4>An Encrypting Distribution System</h4>
-        </div>
-        <div class="mdl-layout--large-screen-only mdl-layout__header-row">
-        </div>
-        <div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
-          <a href="#specifications" class="mdl-layout__tab is-active">Project Specifications</a>
-        </div>
-      </header>
-      <main class="mdl-layout__content">
-        <div class="mdl-layout__tab-panel is-active" id="specifications">
-          <section class="section--center mdl-grid mdl-grid--no-spacing">
-            <div class="mdl-cell mdl-cell--12-col">
-              <ul class="toc">
-                <h2>Contents</h2>
-                <a href="#introduction">Introduction</a>
-                <a href="#description">Description</a>
-                <a href="#constraints">Constraints</a>
-                <a href="#profandethical">Professional and Ethical Issues</a>
-                <a href="#er_diagram">Entity Relationship Diagram</a>
-                <a href="#conclusion">Conclusion</a>
-
-              </ul>
-
-              <h3 id="introduction">1.0 Introduction</h3>
-              <p>When we have a look at our environment, we can see that technology is everywhere. We can see from daily practices to a very narrow study field that it is the way how our community is being developed. To develop technology, data is the most important resource to understand the needs or store the outputs of our researches. From this point of view, when we say “data”, we mean the all outputs that are taken from any research which are being held right now or were already held. By the definition, we can deduce that this requires storage facilities for a huge amount of data. Engineers are continuously working on handling the data and maintaining resources for the on-going researches in this way. For these purposes, data distribution is a powerful technique which is commonly used all around the world because by distributing the data to different points, one both avoids overloads on a single source point and therefore satisfies the demand from different points of the world better. Of course, data distribution brings out some security related questions with itself but data encryption and replication are some other techniques to solve such problems. Our project, GenoDist, aims to create an off the shelf component that a developer can apply these modern techniques to his data storage facilities easily.</p>
-
-              <h4 id="description">1.1 Description</h4>
-              <p>
-                GenoDist aims to provide fast, safe and secure data management online. The data which is planned to be deal with is huge that can be expressed even in petabytes, and there is an abstract data for each data set which contains brief information about real data.
-              </p>
-              <p>
-                In order to be capable of dealing with such big data, it will be distributed among multiple servers. Since whole data will not be used by a client, only abstracts of the data sets will be stored in client side. However, all of the clients should know about the content of the real data, so the abstracts will be stored as block-chain in clients, which is a data structure used for storing continuously growing list of records without tampering or revision.  By that way, clients can see the content of the real data and download whatever part of the data they need, manipulate it and upload it back to servers. But, the data in the block-chain cannot be manipulated by clients. In case of data addition, a block contains the abstract information will be added synchronously to block-chains on clients and the actual data will be distributed among servers.               </p>
-              <p>
-                For data safety, GenoDist will also have data backups to deal with arbitrary server failures. Also, to provide security for users’ data, the data to be stored will be encrypted not to allow third party users to access it. Also, the connections between servers and clients should not leave a back door for unauthorized people.
-              </p>
-              <h4 id="constraints">1.2 Constraints</h4>
-              <ul>
-                  <li>
-                      The bandwidth requirements of the blockchain must be lower than the capacities of about 75% of the network nodes in the system. (If the requirements are too high, only some of the nodes will be able to process blocks which will lead to centralization of control.)
-                  </li>
-                  <li>
-                      The timestamp contained in each block, which indicates its creation time, must have at most three hours of deviation.
-                  </li>
-                  <li>
-                      There must be a uniform access among all network nodes such that no network node must wait for another node to transmit more than one block.
-                  </li>
-                  <li>
-                      The blockchain must not accept a transaction which has more data than the maximum size of a block.
-                  </li>
-                  <li>
-                      The blockchain must not accept a block which does not contain a particular key which indicates its validity.
-                  </li>
-                  <li>
-                      The time required for creating a new block must be less than 20 minutes.
-                  </li>
-                  <li>
-                      The block size must not be more than 1 MB.
-                  </li>
-                  <li>
-                      The blockchain size must not be more than 40 GB.
-                  </li>
-                  <li>
-                      The contents of the transactions must not be open to third parties.
-                  </li>
-                  <li>
-                      There must not be any method for decrypting the cryptography algorithm used for transactions except for brute force attack.
-                  </li>
-                  <li>
-                      Brute force attack to decrypt the cryptography algorithm must theoretically require at least 10000 years to execute.
-                  </li>
-                  <li>
-                      The speed of encryption algorithm must be at least 20 MB/s.
-                  </li>
-              </ul>
-
-              <h4 id="profandethical">1.3.Professional and Ethical Issues</h4>
-              <h5>1.3.1.Data Encryption</h5>
-              <p>
-                Our software product will deal with large amount of human genome data. Since the data contains confidential information, we will use data encryption to prevent the unauthorized access and thus make our system trustworthy and reliable. In this way, only the authorized people will be able to access and utilize the data. In order to provide secure login authentication, the system should verify the identity of users by using their username and password information. Hence, each user should provide their username and password information to the system before starting to use it.
-              </p>
-              <h5>1.3.2.Data Distribution</h5>
-              <p>
-                We will distribute the data 	across multiple servers, which are located at different physical locations, to provide users with faster access time. The purpose of distributing the data is to process the data transaction requests on multiple servers instead of one server. By improving the performance of the back-end side to reduce the data transaction time, we are aiming to enhance the user experience at the end-user side.
-              </p>
-              <h5>1.3.3.Data Replication</h5>
-              <p>
-                In order to keep the database updated, we will use data replication on the servers. If a change has been made on a server, then the data replication updates the other servers to apply that change on them. The idea of data replication is to keep the data up-to-date in all distributed server locations.
-              </p>
-              <h3 id="requirements">2.0 Requirements</h3>
-              <h4>3.1 Functional Requirements </h4>
-              <ul>
-                  <li>
-                      GenoDist is a two-level database management system which is based on a distributed architecture. On the top level, blockchain, a distributed database, stores growing lists of records. These records provide information about how to access to data and summary of data. On the lower level, a distributed system stores the actual data on servers which must be hidden from users.
-                  </li>
-                  <li>
-                      Each user will be able to login to the system via their usernames and passwords.
-                  </li>
-                  <li>
-                      Each user will be able to add data to the blockchain.
-                  </li>
-                  <li>
-                      Each user will be able to specify total number of copies of data.
-                  </li>
-                  <li>
-                      GenoDist will distribute the data according to the summaries.
-                  </li>
-                  <li>
-                      GenoDist will replicate the data for avoiding data loss.
-                  </li>
-                  <li>
-                      Depending on the location of the request and content of the requested data, GenoDist will make the most suitable server, in terms of distance and availability of data, respond to the request.
-                  </li>
-                  <li>
-                      During an erroneous situation on a server, GenoDist will continue operating the flow of data via other servers.
-                  </li>
-                  <li>
-                      GenoDist will check the servers to detect data corruption and if it is the case, it will fix the data by using the replicas.
-                  </li>
-                  <li>
-                      GenoDist will encrypt the data to increase security of the system.
-                  </li>
-              </ul>
-              <h4>3.2 Non-Functional Requirements </h4>
-              <ul>
-                  <li>
-                      Availability: The amount of time the system is operational shall be increased with the distributed architecture compared to centralized architecture via distribution and replication of data to servers and quick recovery procedure when a failure is detected.
-                  </li>
-                  <li>
-                      Continuity: The system shall be able to handle major interruptions such as power outages of a server by continuing operation on other services.
-                  </li>
-                  <li>
-                      Portability: The system shall be usable in different environments.
-                  </li>
-                  <li>
-                      Recoverability: The system shall restore the data in the event of corruption or loss by copying the replicated data from other servers.
-                  </li>
-                  <li>
-                      Response time: Via distributed architecture, response time shall be decreased compared to centralized architecture by locating the request location and sending the data to requester from nearest server.
-                  </li>
-                  <li>
-                      Reusability: The system shall be reused across multiple products to store and retrieve the data.
-                  </li>
-                  <li>
-                      Robustness: The system shall be able to cope with the errors during execution time.
-                  </li>
-                  <li>
-                      Scalability: The system shall be practical and efficient when applied to large input data by adding new resources.
-                  </li>
-                  <li>
-                      Security: Security problem of the distributed systems shall be solved by encrypting the data.
-                  </li>
-                  <li>
-                      Transparency: The block chain part of the system shall be transparent while the resources where actual data is stored shall be hidden from user.
-                  </li>
-                  <li>
-                      Resource constraints: To meet the work load of the system minimum hardware requirements for each machine should be:
-                      <li>
-                          Minimum disk space: 40 GB
-                      </li>
-                      <li>
-                          RAM: 4 GB [4]
-                      </li>
-                      <li>
-                          CPU: 2 cores [4]
-                      </li>
-                  </li>
-              </ul>
-            </div>
-          </section>
-        </div>
-        <footer class="mdl-mega-footer">
-          <div class="mdl-mega-footer--bottom-section">
-            <ul class="mdl-mega-footer--link-list">
-              <li><a href="https://github.com/cxprogrammer">Gizem Caylak</a></li>
-              <li><a href="https://github.com/oguzdemir">Oguz Demir</a></li>
-              <li><a href="https://github.com/turankaanelgin">Turan Kaan Elgin</a></li>
-              <li><a href="https://github.com/furkansahin">Mehmet Furkan Sahin</a></li>
-              <li><a href="https://github.com/OnurUygur">Onur Uygur</a></li>
-            </ul>
-          </div>
-        </footer>
-      </main>
+<div class="container-fluid bg-3 text-center">
+  <h3>Description</h3><br>
+  <div style="left:25%; right:25%;"class="row">
+    <p style="font-size: 18px;">
+        When we have a look at our environment, we can see that technology is everywhere. We can see from daily practices to a very narrow study field that it is the way how our community is being developed. To develop technology, data is the most important resource to understand the needs or store the outputs of our researches. From this point of view, when we say “data”, we mean the all outputs that are taken from any research which are being held right now or were already held. By the definition, we can deduce that this requires storage facilities for a huge amount of data. Engineers are continuously working on handling the data and maintaining resources for the on-going researches in this way. For these purposes, data distribution is a powerful technique which is commonly used all around the world because by distributing the data to different points, one both avoids overloads on a single source point and therefore satisfies the demand from different points of the world better. Of course, data distribution brings out some security related questions with itself but data encryption and replication are some other techniques to solve such problems. Our project, CrypDist, aims to create an off the shelf component that a developer can apply these modern techniques to his data storage facilities easily.
+    </p>
+  </div>
+</div><br>
+<div class="container-fluid bg-3 text-center">
+<h3>Project Team</h3><br>
+  <div class="container-fluid bg-4 text-center ">
+    <div class="col-md-2 col-md-offset-1">
+      <img src="images/mfs.png" class="img-circle" style="width:80%" alt="Image">
+      <p style="font-size: 16px;">Mehmet Furkan Sahin is interested in distributed systems, databases and cloud architecture.
+        He enjoys competing in programming competitions. His hobbies are hiking, travelling, listening music, and football.
+      </p>
     </div>
+    <div class="col-md-2">
+      <img src="images/kaan.png" class="img-circle" style="width:80%" alt="Image">
+      <p style="font-size: 16px;">Mehmet Furkan Sahin is interested in distributed systems, databases and cloud architecture.
+        He enjoys competing in programming competitions. His hobbies are hiking, travelling, listening music, and football.
+      </p>
+    </div>
+    <div class="col-md-2">
+      <img src="images/gizem.png" class="img-circle" style="width:80%" alt="Image">
+      <p style="font-size: 16px;">Mehmet Furkan Sahin is interested in distributed systems, databases and cloud architecture.
+        He enjoys competing in programming competitions. His hobbies are hiking, travelling, listening music, and football.
+      </p>
+    </div>
+    <div class="col-md-2">
+      <img src="images/oguz.png" class="img-circle" style="width:80%" alt="Image">
+      <p style="font-size: 16px;">Mehmet Furkan Sahin is interested in distributed systems, databases and cloud architecture.
+        He enjoys competing in programming competitions. His hobbies are hiking, travelling, listening music, and football.
+      </p>
+    </div>
+    <div class="col-md-2">
+      <img src="images/onur.png" class="img-circle" style="width:80%" alt="Image">
+      <p style="font-size: 16px;">Mehmet Furkan Sahin is interested in distributed systems, databases and cloud architecture.
+        He enjoys competing in programming competitions. His hobbies are hiking, travelling, listening music, and football.
+      </p>
+    </div>
+  </div>
+</div><br>
 
-    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
-    <!-- endbuild -->
+<div  style="left:40%;right:40%;"class="container-fluid bg-6 text-center">
+<div class="col-md-6">
+<h3>Supervisor</h3><br>
+  <div class="container-fluid bg-6 text-center ">
+    <div class="col-md-12">
+      <img src="images/calkan.png" class="img-circle" style="width:30%" alt="Image">
+      <p style="font-size: 20px;">Asst. Prof. Can Alkan
+          <br>
+          Bilkent University
+      </p>
+    </div>
+  </div>
+</div>
 
-  </body>
+<div class="col-md-6">
+<h3>Innovation Expert</h3><br>
+  <div class="container-fluid bg-6 text-center ">
+    <div class="col-md-12">
+      <img src="images/utku.png" class="img-circle" style="width:30%" alt="Image">
+      <p style="font-size: 20px;">Utku Azman
+      <br>
+      <a href="https://www.citusdata.com">Citus Data</a></p>
+    </div>
+  </div>
+</div>
+</div>
+<br>
+
+<div style="left:20%;right:20%;" class="container-fluid bg-6 text-center">
+<h3>Jury Members</h3><br>
+    <div class="col-md-6">
+      <img src="images/ercument.png" class="img-circle" style="width:30%" alt="Image">
+      <p style="font-size: 20px;">Asst. Prof. Ercument Cicek
+          <br>
+          Bilkent University
+      </p>
+    </div>
+    <div class="col-md-6">
+      <img src="images/korpe.png" class="img-circle" style="width:30%" alt="Image">
+      <p style="font-size: 20px;">Prof. Ibrahim Korpeoglu
+          <br>
+          Bilkent University
+      </p>
+    </div>
+</div>
+<br>
+
+
+<footer style="margin-bottom:0px; bottom:0px;left:0px;right:0px;"class="container-fluid text-center">
+  <p>This project is created and maintained by the Team CrypDist as a Senior Project in Bilkent University</p>
+  <br/>
+  <p><a href="https://github.com/CrypDist/"> Source codes are available in GitHub! </a></p>
+</footer>
+
+</body>
 </html>
